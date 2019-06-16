@@ -23,7 +23,7 @@
 </div>
 <script>
   if (parent !== window) {
-    const referer = encodeURIComponent(new URL(document.referer).origin);
+    const referer = encodeURIComponent(new URL(document.referrer).origin);
 
     function fixup(elem) {
       elem.href = elem.href + "?referer=" + referer;
