@@ -7,6 +7,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="main.css">
   <base target="_parent">
+  <script>
+    if (parent !== window) {
+      function fixup(elem) {
+        elem.href = elem.href + "?referer=" + encodeURIComponent(document.referrer);
+      }
+
+      document.addEventListener("load", function() {
+        fixup(document.getElementById("prev"));
+        fixup(document.getElementById("next"));
+      });
+    }
+  </script>
 </head>
 
 <body class="embed">
@@ -16,9 +28,9 @@
     {{ members | length }} members.
   </p>
   <p class="ring-nav">
-    <a href="{{ meta.url }}/prev" aria-label="Go to previous site">◄ Previous</a>
+    <a href="{{ meta.url }}/prev" aria-label="Go to previous site" id="prev">◄ Previous</a>
     <a href="{{ meta.url }}/random" aria-label="Go to a random site">Random</a>
-    <a href="{{ meta.url }}/next" aria-label="Go to next site">Next ►</a>
+    <a href="{{ meta.url }}/next" aria-label="Go to next site" id="next">Next ►</a>
   </p>
 </div>
 </body>
