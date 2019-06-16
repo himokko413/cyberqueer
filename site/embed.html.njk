@@ -23,8 +23,10 @@
 </div>
 <script>
   if (parent !== window) {
+    const referer = encodeURIComponent(new URL(document.referer).origin);
+
     function fixup(elem) {
-      elem.href = elem.href + "?referer=" + encodeURIComponent(document.referrer);
+      elem.href = elem.href + "?referer=" + referer;
     }
 
     fixup(document.getElementById("prev"));
